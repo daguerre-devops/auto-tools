@@ -44,7 +44,7 @@ createContainers(){
   
 	# Création des conteneurs en boucle
 	for i in $(seq $id_min $id_max);do
-		sudo podman run -d --systemd=true --publish-all=true -v /srv/data:/srv/data --name ${CONTAINER_USER}-debian-$i -h ${CONTAINER_USER}-debian-$i docker.io/daguerredevops/debian12 
+		sudo podman run -d --systemd=true --publish-all=true -v /srv/data:/srv/data --name ${CONTAINER_USER}-debian-$i -h ${CONTAINER_USER}-debian-$i docker.io/daguerredevops/debian122 
 		${CONTAINER_CMD} ${CONTAINER_USER}-debian-$i /bin/sh -c "useradd -m -p sa3tHJ3/KuYvI ${CONTAINER_USER}"
 		${CONTAINER_CMD} ${CONTAINER_USER}-debian-$i /bin/sh -c "mkdir -m 0700 ${CONTAINER_HOME}/.ssh && chown ${CONTAINER_USER}:${CONTAINER_USER} ${CONTAINER_HOME}/.ssh"
 		sudo podman cp ${HOME}/.ssh/id_rsa.pub ${CONTAINER_USER}-debian-$i:${CONTAINER_HOME}/.ssh/authorized_keys
